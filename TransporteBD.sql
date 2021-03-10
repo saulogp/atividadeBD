@@ -1,6 +1,6 @@
-create database Transporte2;
+create database TransporteBD;
 go
-use Transporte2;
+use TransporteBD;
 go
 create table Uteis
 (
@@ -141,7 +141,7 @@ insert into Itinerario (id_Linha, id_Logradouro) values (2,2);
 insert into Itinerario (id_Linha, id_Logradouro) values (2,5);
 insert into Endereco(Logradouro, Localidade, Bairro, UF, Numero, CEP)
 values ('Avenida Otto Ernani Muller', 'Araraquara', 'Jardim Tamoio', 'SP', '10', '14800630');
-insert into Empresa (CNPJ, Nome, Endereco_Web, id_Endereco) values('51663680000164', 'viação paraty araraquara', 'vparaty.com.br', 1);
+insert into Empresa (CNPJ, Nome, Endereco_Web, id_Endereco) values('51663680000164', 'viaÃ§Ã£o paraty araraquara', 'vparaty.com.br', 1);
 insert into Telefone (CNPJ, Numero, Tipo) values ('51663680000164', '1633347800', 'Comercial');
 insert into Empresa_Linha (CNPJ, id_Linha) values ('51663680000164', 1);
 insert into Empresa_Linha (CNPJ, id_Linha) values ('51663680000164', 2);
@@ -175,7 +175,7 @@ insert into Itinerario (id_Linha, id_Logradouro) values (3,5);
 insert into Itinerario (id_Linha, id_Logradouro) values (3,7);
 insert into Endereco(Logradouro, Localidade, Bairro, UF, Numero, CEP)
 values ('Av. Professor Augusto Cesar', 'Araraquara', 'Centro', 'SP', '697', '14801240');
-insert into Empresa (CNPJ, Nome, Endereco_Web, id_Endereco) values('11111111111111', 'Saulão Latina Bus', 'slbus.com.br', 2);
+insert into Empresa (CNPJ, Nome, Endereco_Web, id_Endereco) values('11111111111111', 'SaulÃ£o Latina Bus', 'slbus.com.br', 2);
 insert into Telefone (CNPJ, Numero, Tipo) values ('11111111111111', '1633367966', 'Comercial');
 insert into Empresa_Linha (CNPJ, id_Linha) values ('11111111111111', 3);
 
@@ -189,7 +189,7 @@ select e.Nome as Empresa, e.CNPJ, l.Nome as Linha
 from Empresa_Linha el join Linha l
 on l.Codigo = el.id_Linha,
 Empresa e 
-where e.Nome = 'viação paraty araraquara' and el.CNPJ = e.CNPJ;
+where e.Nome = 'viaÃ§Ã£o paraty araraquara' and el.CNPJ = e.CNPJ;
 -----------------------------------------------------
 --b
 select l.Nome as Nome_Linha, lg.nome as Itinerario
@@ -199,7 +199,7 @@ where l.Nome = 'Br-->Ar' and lg.Codigo = i.id_Logradouro
 order by i.Codigo;
 -----------------------------------------------------
 --c
-select l.Nome, u.Horario as Uteis, f.Horario as Feriado, s.Horario as Sáb, d.Horario as Dom 
+select l.Nome, u.Horario as Uteis, f.Horario as Feriado, s.Horario as SÃ¡b, d.Horario as Dom 
 from Linha l join Quadro_horario q on l.id_QuadroH = q.Codigo,
 Uteis u, Feriado f, Sabado s, Domingo d
 where l.Nome = 'Br-->Ar' and u.Codigo = q.id_U and f.Codigo = q.id_F and s.Codigo = q.id_S and d.Codigo = q.id_D;
@@ -217,7 +217,7 @@ select e.Nome as Empresa, e.CNPJ, l.Nome as Linha
 from Empresa_Linha el join Linha l
 on l.Codigo = el.id_Linha,
 Empresa e 
-where e.Nome = 'Saulão Latina Bus' and el.CNPJ = e.CNPJ;
+where e.Nome = 'SaulÃ£o Latina Bus' and el.CNPJ = e.CNPJ;
 -----------------------------------------------------
 --b
 select l.Nome as Nome_Linha, lg.nome as Itinerario
@@ -227,7 +227,7 @@ where l.Nome = 'Ch-->Vn' and lg.Codigo = i.id_Logradouro
 order by i.Codigo;
 -----------------------------------------------------
 --c
-select l.Nome, u.Horario as Uteis, f.Horario as Feriado, s.Horario as Sáb, d.Horario as Dom 
+select l.Nome, u.Horario as Uteis, f.Horario as Feriado, s.Horario as SÃ¡b, d.Horario as Dom 
 from Linha l join Quadro_horario q on l.id_QuadroH = q.Codigo,
 Uteis u, Feriado f, Sabado s, Domingo d
 where l.Nome = 'Ch-->Vn' and u.Codigo = q.id_U and f.Codigo = q.id_F and s.Codigo = q.id_S and d.Codigo = q.id_D;
